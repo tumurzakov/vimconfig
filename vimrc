@@ -53,7 +53,11 @@ nnoremap <silent> <F9> :TagbarToggle<CR>
 set keywordprg=pman
 
 let g:syntastic_javascript_checkers = ['jshint']
-let g:airline_theme='molokai'
+
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'kolor'
+set t_Co=256
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
@@ -70,3 +74,7 @@ let g:vimshell_prompt =  '$ '
 nnoremap <silent> <leader>sh :VimShellPop<CR>
 
 let g:javascript_enable_domhtmlcss = 1
+
+hi IndentGuidesOdd  ctermbg=white
+hi IndentGuidesEven ctermbg=lightgrey
+hi TagbarScope guifg=Green ctermfg=Green
