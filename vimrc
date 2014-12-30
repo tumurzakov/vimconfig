@@ -1,5 +1,41 @@
-execute pathogen#infect()
-execute pathogen#helptags()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin('vundles')
+
+Plugin 'git://github.com/kien/ctrlp.vim.git'
+Plugin 'git://github.com/mattn/emmet-vim.git'
+Plugin 'git://github.com/vim-scripts/grep.vim'
+Plugin 'git://github.com/amirh/HTML-AutoCloseTag.git'
+Plugin 'git://github.com/gregsexton/MatchTag.git'
+Plugin 'git://github.com/scrooloose/nerdcommenter.git'
+Plugin 'git://github.com/scrooloose/nerdtree.git'
+Plugin 'git://github.com/edkolev/promptline.vim.git'
+Plugin 'git://github.com/ervandew/supertab.git'
+Plugin 'git://github.com/scrooloose/syntastic.git'
+Plugin 'git://github.com/godlygeek/tabular.git'
+Plugin 'git://github.com/majutsushi/tagbar.git'
+Plugin 'git://github.com/edkolev/tmuxline.vim.git'
+Plugin 'git://github.com/bling/vim-airline.git'
+Plugin 'git://github.com/gorodinskiy/vim-coloresque'
+Plugin 'git://github.com/altercation/vim-colors-solarized.git'
+Plugin 'git://github.com/hail2u/vim-css3-syntax'
+Plugin 'git://github.com/ap/vim-css-color.git'
+Plugin 'git://github.com/tpope/vim-fugitive.git'
+Plugin 'git://github.com/airblade/vim-gitgutter.git'
+Plugin 'git://github.com/fatih/vim-go.git'
+Plugin 'git://github.com/tpope/vim-haml'
+Plugin 'git://github.com/nathanaelkane/vim-indent-guides.git'
+Plugin 'git://github.com/pangloss/vim-javascript.git'
+Plugin 'git://github.com/tpope/vim-markdown.git'
+Plugin 'git://github.com/terryma/vim-multiple-cursors.git'
+Plugin 'git://github.com/jistr/vim-nerdtree-tabs.git'
+Plugin 'git://github.com/sickill/vim-pasta.git'
+Plugin 'git://github.com/arnaud-lb/vim-php-namespace.git'
+Plugin 'git://github.com/Shougo/vimproc.vim'
+Plugin 'git://github.com/tpope/vim-repeat.git'
+Plugin 'git://github.com/Shougo/vimshell.vim'
+Plugin 'git://github.com/honza/vim-snippets'
+Plugin 'git://github.com/tpope/vim-surround.git'
+Plugin 'git://github.com/bronson/vim-trailing-whitespace.git'
 
 " use visual bell instead of beeping
 set vb
