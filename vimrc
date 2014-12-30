@@ -1,3 +1,6 @@
+set nocompatible
+filetype off
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('vundles')
 
@@ -36,6 +39,9 @@ Plugin 'git://github.com/Shougo/vimshell.vim'
 Plugin 'git://github.com/honza/vim-snippets'
 Plugin 'git://github.com/tpope/vim-surround.git'
 Plugin 'git://github.com/bronson/vim-trailing-whitespace.git'
+
+call vundle#end()
+filetype plugin indent on 
 
 " use visual bell instead of beeping
 set vb
