@@ -89,6 +89,7 @@ vmap _C :s/^#//gi<Enter>
 " syntax color complex things like @{${"foo"}}
 let perl_extended_vars = 1
 
+"let NERDTreeDirArrows=0
 nmap <silent> ` :NERDTreeToggle<CR>
 nnoremap <silent> <F9> :TagbarToggle<CR>
 
