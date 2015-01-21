@@ -1,0 +1,20 @@
+snippet func
+	public function ${1}() {
+	}
+
+snippet pfunc
+	private function ${1}() {
+	}
+
+snippet cont
+	<?php
+	App::uses('AppController', 'Controller');
+	class ${1}Controller extends AppController {
+		public $scaffold;
+		public $components = array('Rest.Server');
+	}
+
+snippet model
+	<?php
+	class ${1} extends AppModel {
+	}
