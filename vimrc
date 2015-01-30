@@ -371,6 +371,12 @@ set pastetoggle=<F11>
 map <F7> :set filetype=html<CR>
 map <F8> :set filetype=php<CR>
 
+"undo
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000
+set undoreload=10000
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
