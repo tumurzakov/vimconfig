@@ -1,26 +1,27 @@
-`         = open Nerd                        | Emmet                            | Surround
-F1        = open this help                   | -----                            | --------
-F2        =                                  | C-y ,          = expand          | ds"                 = delete sur with "
-F3        = Unite file buffer                | C-y d,D        = balance         | cs"'                = change sur from " to '
-F5        = open Undo history                | C-y n,N        = next/prev       | yss-                = sur with php
-F7        = change filetype to html          | C-y k          = remove tag      |
-F8        = change filetype to php           | C-y j          = join            | Visual mode
-F9        = open Tagbar                      | C-y /          = comment         | -----------
-F11       = enable paste mode                | C-y a          = make link       | * or #              = search marked
-                                             | c-y c          = escape          |
-C-v       = vertical selection               | lorem and C-Y, = expand          | Commands
-C-p       = ctrlp.vim                        |                                  | --------
-C-n       = mark with multicursor            | NerdCommenter                    | :Tabular /=/l5r1c0  = tabularize by =
-C-j,k,l,h = moving by windows                | -------------                    | :bd!                = close hidden buffer
-                                             | \cc            = comment out     | :SaveSession <name> = vim-session
-\bd       = close current buffer             | \c<space>      = toggle comment  | :OpenSession <name> = vim-session
-\ba       = close all buffers                | \cm            = use multiline   | :FormatCode         = Google codefmt
-\k        = snippet                          | \cs            = sexily          |
-\f        = grep.vim                         | \c$            = current line    |
-\l        = show blank chars                 | \cu            = uncomment       |
-\m        = remove Windows ^M                |                                  |
-\p        = format php file                  | Fugitive                         |
-\tn       = :tabnew                          | --------                         |
-\to       = :tabonly                         | :Git           = same as !git    |
-\tc       = :tabclose                        | :G<cmd>        = run git command |
-\tm       = :tabmove                         |                                  |
+`         = open Nerd                 | --Emmet--                        |
+F1        = open this help            |  lorem and C-Y, = expand         | --Surround--
+F2        =                           | C-y ,          = expand          | ds"                 = delete sur with "
+F3        = Unite file buffer         | C-y d,D        = balance         | cs"'                = change sur from " to '
+F5        = open Undo history         | C-y n,N        = next/prev       | yss-                = sur with php
+F7        = change filetype to html   | C-y k          = remove tag      |
+F8        = change filetype to php    | C-y j          = join            | --Visual mode--
+F9        = open Tagbar               | C-y /          = comment         | * or #              = search marked
+F11       = enable paste mode         | C-y a          = make link       | Enter               = EasyAlign
+                                      | c-y c          = escape          |
+C-v       = vertical selection        |                                  |
+C-p       = ctrlp.vim                 |  --NerdCommenter--               | --Commands--
+C-n       = mark with multicursor     | \c$            = current line    | :Tabular /=/l5r1c0  = tabularize by =
+C-j,k,l,h = moving by windows         | \cu            = uncomment       | :bd!                = close hidden buffer
+                                      | \cc            = comment out     | :SaveSession <name> = vim-session
+\bd       = close current buffer      | \c<space>      = toggle comment  | :OpenSession <name> = vim-session
+\ba       = close all buffers         | \cm            = use multiline   | :FormatCode         = Google codefmt
+\k        = snippet                   | \cs            = sexily          |
+\f        = grep.vim                  |                                  | Moving    C-b C-u    '' last location
+\l        = show blank chars          |  --Fugitive--                    | around     H         '. last modification
+\m        = remove Windows ^M         | :Git           = same as !git    |            { (       %  matching bracket
+\p        = format php file           | :G<cmd>        = run git command |     B gE   k
+\tn       = :tabnew                   |                                  | 0 ^ b ge h   l e w $
+\to       = :tabonly                  | --EasyAlign--                    |            j   E W
+\tc       = :tabclose                 | ga             = align           |          ) }
+\tm       = :tabmove                  |                                  |            L
+                                      |                                  |       C-d C-f

@@ -45,6 +45,8 @@ Plugin 'git://github.com/dericofilho/php.tools.git'
 Plugin 'git://github.com/sjl/gundo.vim.git'
 Plugin 'git://github.com/Shougo/unite.vim.git'
 Plugin 'git://github.com/tyru/open-browser.vim.git'
+Plugin 'git://github.com/junegunn/vim-easy-align.git'
+Plugin 'git://github.com/othree/html5.vim.git'
 
 call vundle#end()
 
@@ -448,6 +450,12 @@ autocmd FileType ctp let b:surround_45 = "<?php \r ?>"
 
 nnoremap <silent><F3> :Unite file buffer<CR>
 nnoremap <silent><F1> :call ToggleF1()<CR>
+
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+"
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
