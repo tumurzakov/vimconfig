@@ -37,7 +37,12 @@ Plugin 'git://github.com/tpope/vim-surround.git'
 Plugin 'git://github.com/bronson/vim-trailing-whitespace.git'
 Plugin 'git://github.com/xolox/vim-misc.git'
 Plugin 'git://github.com/xolox/vim-session.git'
-
+Plugin 'git://github.com/google/glaive'
+Plugin 'git://github.com/google/vim-maktaba'
+Plugin 'git://github.com/google/vim-codefmtlib'
+Plugin 'git://github.com/google/vim-codefmt'
+Plugin 'git://github.com/dericofilho/php.tools.git'
+Plugin 'git://github.com/sjl/gundo.vim.git'
 
 call vundle#end()
 
@@ -422,6 +427,17 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
+autocmd FileType javascript let b:codefmt_formatter = 'clang-format'
+call maktaba#plugin#Detect()
+
+"autocmd BufWritePost *.php :call PhpFmt()
+nnoremap <silent><leader>pcf :call PhpFmt()<CR>
+
+nnoremap <F5> :GundoToggle<CR>
+
+set wildcharm=<C-Z>
+nnoremap <F2> :b <C-Z>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -482,3 +498,22 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+fun! PhpFmt()
+    let path = expand('%:p')
+    let command = "php ~/.vim/vundles/php.tools/fmt.php --no-backup --indent_with_space=4 --cakephp ".path
+    let s:lint = system('php -l '.path)
+    if v:shell_error
+        echohl Error | echo s:lint | echohl None
+    else
+        let s:output = system(command)
+        if v:shell_error
+            echohl Error | echo s:output | echohl None
+        else
+            exec 'edit!'
+            :set statusline="phpfmt: done"
+        endif
+    endif
+    :syntax on
+endfun
+
