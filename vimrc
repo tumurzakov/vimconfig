@@ -43,6 +43,8 @@ Plugin 'git://github.com/google/vim-codefmtlib'
 Plugin 'git://github.com/google/vim-codefmt'
 Plugin 'git://github.com/dericofilho/php.tools.git'
 Plugin 'git://github.com/sjl/gundo.vim.git'
+Plugin 'git://github.com/Shougo/unite.vim.git'
+Plugin 'git://github.com/tyru/open-browser.vim.git'
 
 call vundle#end()
 
@@ -205,8 +207,8 @@ map j gj
 map k gk
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+"map <space> /
+"map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -317,10 +319,10 @@ vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 " To go to the previous search results do:
 "   <leader>p
 "
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+"map <leader>cc :botright cope<cr>
+"map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+"map <leader>n :cn<cr>
+"map <leader>p :cp<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -363,8 +365,8 @@ nmap <s-tab> ^i<bs><esc>
 set pastetoggle=<F11>
 
 " comment/uncomment blocks of code (in vmode)
-vmap _c :s/^/#/gi<Enter>
-vmap _C :s/^#//gi<Enter>
+"vmap _c :s/^/#/gi<Enter>
+"vmap _C :s/^#//gi<Enter>
 
 map <F7> :set filetype=html<CR>
 map <F8> :set filetype=php<CR>
@@ -404,15 +406,12 @@ let g:javascript_enable_domhtmlcss = 1
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
-map <leader>so :OpenSession! default<CR>
-map <leader>ss :SaveSession! default<CR>
-
 "neosnippet
 let g:neosnippet#enable_snipmate_compatibility = 1
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <leader>k     <Plug>(neosnippet_expand_or_jump)
+smap <leader>k    <Plug>(neosnippet_expand_or_jump)
+xmap <leader>k    <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -431,12 +430,18 @@ autocmd FileType javascript let b:codefmt_formatter = 'clang-format'
 call maktaba#plugin#Detect()
 
 "autocmd BufWritePost *.php :call PhpFmt()
-nnoremap <silent><leader>pcf :call PhpFmt()<CR>
+nnoremap <silent><leader>p :call PhpFmt()<CR>
 
 nnoremap <F5> :GundoToggle<CR>
 
-set wildcharm=<C-Z>
-nnoremap <F2> :b <C-Z>
+let g:user_emmet_leader_key = '<c-y>'
+
+"surround
+autocmd FileType php let b:surround_45 = "<?php \r ?>"
+autocmd FileType ctp let b:surround_45 = "<?php \r ?>"
+
+nnoremap <silent><F3> :Unite file buffer<CR>
+nnoremap <silent><F1> :call ToggleF1()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -515,5 +520,20 @@ fun! PhpFmt()
         endif
     endif
     :syntax on
+endfun
+
+fun! ToggleF1()
+    set previewheight=28
+    if !exists("g:toggle_f1")
+        let g:toggle_f1 = 0
+    endif
+
+    if g:toggle_f1 == 1
+        :pclose
+        let g:toggle_f1 = 0
+    else
+        :pedit ~/.vim/help.txt
+        let g:toggle_f1 = 1
+    endif
 endfun
 
