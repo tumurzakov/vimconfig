@@ -1,27 +1,34 @@
-`         = open Nerd                 | --Emmet--                        |
-F1        = open this help            |  lorem and C-Y, = expand         | --Surround--
-F2        =                           | C-y ,          = expand          | ds"                 = delete sur with "
-F3        = Unite file buffer         | C-y d,D        = balance         | cs"'                = change sur from " to '
-F5        = open Undo history         | C-y n,N        = next/prev       | yss-                = sur with php
-F7        = change filetype to html   | C-y k          = remove tag      |
-F8        = change filetype to php    | C-y j          = join            | --Visual mode--
-F9        = open Tagbar               | C-y /          = comment         | * or #              = search marked
-F11       = enable paste mode         | C-y a          = make link       | Enter               = EasyAlign
-                                      | c-y c          = escape          |
-C-v       = vertical selection        |                                  |
-C-p       = ctrlp.vim                 |  --NerdCommenter--               | --Commands--
-C-n       = mark with multicursor     | \c$            = current line    | :Tabular /=/l5r1c0  = tabularize by =
-C-j,k,l,h = moving by windows         | \cu            = uncomment       | :bd!                = close hidden buffer
-                                      | \cc            = comment out     | :SaveSession <name> = vim-session
-\bd       = close current buffer      | \c<space>      = toggle comment  | :OpenSession <name> = vim-session
-\ba       = close all buffers         | \cm            = use multiline   | :FormatCode         = Google codefmt
-\k        = snippet                   | \cs            = sexily          |
-\f        = grep.vim                  |                                  | Moving    C-b C-u    '' last location
-\l        = show blank chars          |  --Fugitive--                    | around     H         '. last modification
-\m        = remove Windows ^M         | :Git           = same as !git    |            { (       %  matching bracket
-\p        = format php file           | :G<cmd>        = run git command |     B gE   k
-\tn       = :tabnew                   |                                  | 0 ^ b ge h   l e w $
-\to       = :tabonly                  | --EasyAlign--                    |            j   E W
-\tc       = :tabclose                 | ga             = align           |          ) }
-\tm       = :tabmove                  |                                  |            L
-                                      |                                  |       C-d C-f
+`         = open Nerd            | --Emmet--                   |  --Surround--              | --Misc-
+F1        = open this help       | lorem and C-Y, = expand     | ds"    = delete sur with " |
+F2        =                      | C-y ,          = expand     | cs"'   = sur from " to '   | :set formatprg=par\ -w50
+F3        = Unite file buffer    | C-y d,D        = balance    | yss-   = sur with php      | gq       = format paragraph
+F5        = open Undo history    | C-y n,N        = next/prev  |                            | :changes = show changes
+F7        = filetype to html     | C-y k          = remove tag | --Visual mode--            | g; g,    = moving by changes
+F8        = filetype to php      | C-y j          = join       |                            | :jumps   = show jumps
+F9        = open Tagbar          | C-y /          = comment    | * or # = search marked     | C-O,C-I  = moving by jumps
+F11       = enable paste mode    | C-y a          = make link  | Enter  = EasyAlign         | =        = indent
+                                 | c-y c          = escape     | r,d,o  = in C-v mode       | retab!   = convert
+C-v       = vertical selection   |                             |                            |
+C-p       = ctrlp.vim            |  --NerdCommenter--          | --Commands--               | --PHP refactor--
+C-n       = multicursor          | \c$       = current line    | :Tabular /=/l5r1c0         | \r[lv,cv,m] = rename
+C-j,k,l,h = moving by windows    | \cu       = uncomment       | :bd! = close hidden buffer | \e[u,c,p,m] = extract
+                                 | \cc       = comment out     | :SaveSession <name>        |
+\bd       = close cur buffer     | \c<space> = toggle comment  | :OpenSession <name>        |
+\ba       = close all buffers    | \cm       = use multiline   | :FormatCode                |
+\k        = snippet              | \cs       = sexily          |                            |
+\f        = grep.vim             |                             | Moving    C-b C-u          |
+\l        = show blank chars     | --Fugitive--                | around     H               |
+\m        = remove Windows ^M    | :Git      = same as !git    |            { (             |
+\p        = format php file      | :G<cmd>   = run git command |     B gE   k               |
+\tn       = :tabnew              |                             | 0 ^ b ge h   l e w $       | --Copy-Paste--
+\to       = :tabonly             | --EasyAlign--               |            j   E W         | "+y - CLIPBOARD
+\tc       = :tabclose            | ga        = align           |          ) }               | "*y - PRIMARY
+\tm       = :tabmove             |                             |            L               | yyp - duplicate line
+\v        = edit .vimrc          |                             |           C-d C-f          |
+\w        = strip whitespaces    |                             |                            |
+                                 |                             | '' last location           |
+                                 |                             | '. last modification       |
+                                 |                             | %  matching bracket        |
+                                 |                             |                            |
+                                 |                             |                            |
+                                 |                             |                            |
