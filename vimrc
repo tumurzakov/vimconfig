@@ -446,9 +446,9 @@ let g:user_emmet_leader_key = '<c-y>'
 
 "surround
 autocmd FileType php let b:surround_45 = "<?php \r ?>"
-autocmd FileType ctp let b:surround_45 = "<?php \r ?>"
+autocmd FileType php let b:surround_95 = "<?php echo __('\r'); ?>"
 
-nnoremap <silent><F3> :Unite file buffer<CR>
+nnoremap <silent><F3> :call ToggleUnite()<CR>
 nnoremap <silent><F1> :call ToggleF1()<CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
@@ -456,6 +456,8 @@ vmap <Enter> <Plug>(EasyAlign)
 "
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+let g:extra_whitespace_ignored_filetypes = ['unite', 'mkd']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -548,6 +550,21 @@ fun! ToggleF1()
     else
         :pedit ~/.vim/help.txt
         let g:toggle_f1 = 1
+    endif
+endfun
+
+fun! ToggleUnite()
+    set previewheight=28
+    if !exists("g:toggle_unite")
+        let g:toggle_unite = 0
+    endif
+
+    if g:toggle_unite == 1
+        :UniteClose
+        let g:toggle_unite = 0
+    else
+        :Unite file buffer
+        let g:toggle_unite = 1
     endif
 endfun
 
