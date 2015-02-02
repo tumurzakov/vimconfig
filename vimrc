@@ -47,6 +47,7 @@ Plugin 'git://github.com/Shougo/unite.vim.git'
 Plugin 'git://github.com/tyru/open-browser.vim.git'
 Plugin 'git://github.com/junegunn/vim-easy-align.git'
 Plugin 'git://github.com/othree/html5.vim.git'
+Plugin 'git://github.com/adoy/vim-php-refactoring-toolbox'
 
 call vundle#end()
 
@@ -71,6 +72,10 @@ let g:mapleader = "\\"
 " Fast saving
 nmap <leader>w :w!<cr>
 
+if has("autocmd")
+    autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+nmap <leader>v :tabedit $MYVIMRC<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -285,15 +290,20 @@ if has("mac") || has("macunix")
   vmap <D-k> <M-k>
 endif
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
 
+nnoremap <leader>w :call <SID>StripTrailingWhitespaces()<CR>
+autocmd BufWritePre *.py,*.js,*.php,*.ctp :call <SID>StripTrailingWhitespaces()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vimgrep searching and cope displaying
@@ -379,7 +389,6 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -458,6 +467,9 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 let g:extra_whitespace_ignored_filetypes = ['unite', 'mkd']
+
+" delete fugitive hidden buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -539,7 +551,7 @@ fun! PhpFmt()
 endfun
 
 fun! ToggleF1()
-    set previewheight=28
+    set previewheight=50
     if !exists("g:toggle_f1")
         let g:toggle_f1 = 0
     endif
