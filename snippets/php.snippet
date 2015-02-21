@@ -1,9 +1,16 @@
 snippet func
 	public function ${1}() {
+	    ${2}
 	}
 
 snippet pfunc
 	private function ${1}() {
+	    ${2}
+	}
+
+snippet rfunc
+	protected function ${1}() {
+	    ${2}
 	}
 
 snippet cont
@@ -12,22 +19,15 @@ snippet cont
 	class ${1}Controller extends AppController {
 		public $scaffold;
 		public $components = array('Rest.Server');
+
+	    ${2}
 	}
 
 snippet model
 	<?php
 	class ${1} extends AppModel {
+	    ${2}
 	}
-
-# Layout variables
-snippet cfl
-	<?php echo $content_for_layout; ?>
-
-snippet sfl
-	<?php echo $scripts_for_layout; ?>
-
-snippet tfl
-	<?php echo $title_for_layout; ?>
 
 # Form helper
 snippet form
@@ -45,6 +45,12 @@ snippet in
 snippet submit
 	<?php echo $this->Form->submit('${1}'); ?>
 
+snippet button
+	<?php echo $this->Form->button('${1}'); ?>
+
+snippet reset
+	<?php echo $this->Form->reset('${1}'); ?>
+
 snippet textarea
 	<?php echo $this->Form->textarea('${1}'); ?>
 
@@ -53,10 +59,10 @@ snippet css
 	<?php echo $this->Html->css('${1:filename}', array()); ?>
 
 snippet img
-	<?php echo $this->Html->image('${1:image.ext}'); ?>
+	<?php echo $this->Html->image('${1:filename}'); ?>
 
 snippet link
-	<?php echo $this->Html->link('${1:text}', ${2:array('controller' => '${3:controller}', 'action' => '${4:action}')); ?>
+	<?php echo $this->Html->link('${1:text}', ${2:array('controller' => '', 'action' => '')}); ?>
 
 snippet meta
 	<?php echo $this->Html->meta('${1:type}'); ?>
@@ -64,12 +70,9 @@ snippet meta
 snippet script
 	<?php echo $this->Html->script('${1:filename}', array()); ?>
 
-snippet style
-	<?php echo $this->Html->style(${1:array($2)}$3); ?>
-
 # Controller
 snippet dela
-	$this->${1:ModelName}->deleteAll(${2:$conditions}${3: ,$cascade});
+	$this->${1:ModelName}->deleteAll(${2:$conditions}${3:, $cascade});
 
 snippet id=
 	$this->${1:ModelName}->id = ${2:$id};
@@ -81,15 +84,15 @@ snippet savef
 	$this->${1:ModelName}->saveField('${2:$field}', ${3:$fieldValue});
 
 snippet upa
-	$this->${1:ModelName}->updateAll(${2:$fields}${3: ,$conditions});
+	$this->${1:ModelName}->updateAll(${2:$fields}${3:, $conditions});
 
 snippet find
-	$this->${1:ModelName}->find('${2:all}'${3: ,$params});
+	$this->${1:ModelName}->find('${2:all}'${3:, $params});
 
-snippet findby
+snippet findBy
 	$this->${1:ModelName}->findBy${2:FieldName}(${3:$value});
 
-snippet findallby
+snippet findAllBy
 	$this->${1:ModelName}->findAllBy${2:FieldName}(${3:$value}));
 
 snippet field
@@ -117,7 +120,6 @@ snippet assertP
 
 snippet assertT
 	$this->assertTrue(${1:$result});
-
 
 # Misc
 snippet echo
@@ -154,39 +156,21 @@ snippet configw
 	Configure::write('$1', $2);
 
 snippet afterfil
-	/**
-	 * Controller afterFilter callback.
-	 * Called after the controller action is run and rendered.
-	 *
-	 * @return void
-	 */
 	function afterFilter() {
-        parent::afterFilter();
-		$1
+	    parent::afterFilter();
+	    ${1}
 	}
 
 snippet beforefil
-	/**
-	 * Controller beforeFilter callback.
-	 * Called before the controller action.
-	 *
-	 * @return void
-	 */
 	function beforeFilter() {
-        parent::beforeFilter();
-		$1
+	    parent::beforeFilter();
+	    ${1}
 	}
 
 snippet beforeren
-	/**
-	 * Controller afterFilter callback.
-	 * Called after the controller action is run, but before the view is rendered.
-	 *
-	 * @return void
-	 */
 	function beforeRender() {
-        parent::beforeRender();
-		$1
+	    parent::beforeRender();
+	    ${1}
 	}
 
 # Inflector
@@ -221,57 +205,60 @@ snippet infvar
 
 snippet beforeFind
 	function beforeFind($query) {
-        parent::beforeFind($query);
-		${1}
+	    parent::beforeFind($query);
+	    ${1}
 	}
 
 snippet afterFind
 	function afterFind($results, $primary = false) {
-        parent::afterFind($results, $primary);
-		${1}
+	    parent::afterFind($results, $primary);
+	    ${1}
 	}
 
 snippet beforeSave
 	function beforeSave($options = array()) {
-        parent::beforeSave($options);
-		${1}
+	    parent::beforeSave($options);
+	    ${1}
 	}
 
 snippet afterSave
 	function afterSave($created, $options = array()) {
-        parent::afterSave($options);
-		${1}
+	    parent::afterSave($options);
+	    ${1}
 	}
 
 snippet beforeDelete
 	function beforeDelete($cascade = true) {
-        parent::beforeDelete($cascade);
-		${1}
+	    parent::beforeDelete($cascade);
+	    ${1}
 	}
 
 snippet afterDelete
 	function afterDelete() {
-        parent::afterDelete();
-		${1}
+	    parent::afterDelete();
+	    ${1}
 	}
 
 snippet beforeValidate
 	function beforeValidate($options = true) {
-        parent::beforeValidate($options);
-		${1}
+	    parent::beforeValidate($options);
+	    ${1}
 	}
 
 snippet afterValidate
 	function afterValidate() {
-        parent::afterValidate();
-		${1}
+	    parent::afterValidate();
+	    ${1}
 	}
 
 snippet __
-	__('${1}', '');
+	__('${1}', '${2}');
+
+snippet __h
+	__h(${1});
 
 snippet __p
-	<?php echo __('${1}', ''); ?>
+	<?php echo __('${1}', '${2}'); ?>
 
 
 # Model

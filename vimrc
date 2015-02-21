@@ -426,7 +426,7 @@ let g:session_autoload = 'no'
 "neosnippet
 let g:neosnippet#enable_snipmate_compatibility = 1
 " Plugin key-mappings.
-imap <leader>k     <Plug>(neosnippet_expand_or_jump)
+imap <leader>k    <Plug>(neosnippet_expand_or_jump)
 smap <leader>k    <Plug>(neosnippet_expand_or_jump)
 xmap <leader>k    <Plug>(neosnippet_expand_target)
 
