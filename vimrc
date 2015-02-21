@@ -47,7 +47,7 @@ Plugin 'git://github.com/Shougo/unite.vim.git'
 Plugin 'git://github.com/tyru/open-browser.vim.git'
 Plugin 'git://github.com/junegunn/vim-easy-align.git'
 Plugin 'git://github.com/othree/html5.vim.git'
-Plugin 'git://github.com/adoy/vim-php-refactoring-toolbox'
+Plugin 'git://github.com/violetyk/cake.vim'
 
 call vundle#end()
 
@@ -454,7 +454,11 @@ nnoremap <F5> :GundoToggle<CR>
 let g:user_emmet_leader_key = '<c-y>'
 
 "surround
+
+"-
 autocmd FileType php let b:surround_45 = "<?php \r ?>"
+
+"_
 autocmd FileType php let b:surround_95 = "<?php echo __('\r'); ?>"
 
 nnoremap <silent><F3> :call ToggleUnite()<CR>

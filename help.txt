@@ -1,5 +1,5 @@
 `         = open Nerd            | --Emmet--                   |  --Surround--              | --Misc-
-F1        = open this help       | lorem and C-Y, = expand     | ds"    = delete sur with " |
+F1        = open this help       | lorem and C-Y, = expand     | ds"    = delete sur with " | retab!   = convert
 F2        =                      | C-y ,          = expand     | cs"'   = sur from " to '   | :set formatprg=par\ -w50
 F3        = Unite file buffer    | C-y d,D        = balance    | yss-   = sur with php      | gq       = format paragraph
 F5        = open Undo history    | C-y n,N        = next/prev  |                            | :changes = show changes
@@ -7,23 +7,23 @@ F7        = filetype to html     | C-y k          = remove tag | --Visual mode--
 F8        = filetype to php      | C-y j          = join       |                            | :jumps   = show jumps
 F9        = open Tagbar          | C-y /          = comment    | * or # = search marked     | C-O,C-I  = moving by jumps
 F11       = enable paste mode    | C-y a          = make link  | Enter  = EasyAlign         | =        = indent
-                                 | c-y c          = escape     | r,d,o  = in C-v mode       | retab!   = convert
+                                 | c-y c          = escape     | r,d,o  = in C-v mode       |
 C-v       = vertical selection   |                             |                            |
-C-p       = ctrlp.vim            |  --NerdCommenter--          | --Commands--               | --PHP refactor--
-C-n       = multicursor          | \c$       = current line    | :Tabular /=/l5r1c0         | \r[lv,cv,m] = rename
-C-j,k,l,h = moving by windows    | \cu       = uncomment       | :bd! = close hidden buffer | \e[u,c,p,m] = extract
-                                 | \cc       = comment out     | :SaveSession <name>        |
+C-p       = ctrlp.vim            |  --NerdCommenter--          | --Commands--               | -- CakePHP --
+C-n       = multicursor          | \c$       = current line    | :Tabular /=/l5r1c0         | gf                = go to object
+C-j,k,l,h = moving by windows    | \cu       = uncomment       | :bd! = close hidden buffer | :C<cmd>           = go to file
+                                 | \cc       = comment out     | :SaveSession <name>        | :Unite cake_<cmd> = show list
 \bd       = close cur buffer     | \c<space> = toggle comment  | :OpenSession <name>        |
-\ba       = close all buffers    | \cm       = use multiline   | :FormatCode                |
-\k        = snippet              | \cs       = sexily          |                            |
-\f        = grep.vim             |                             | Moving    C-b C-u          |
-\l        = show blank chars     | --Fugitive--                | around     H               |
+\ba       = close all buffers    | \cm       = use multiline   | :FormatCode                | --Copy-Paste--
+\k        = snippet              | \cs       = sexily          |                            | "+y - CLIPBOARD
+\f        = grep.vim             |                             | Moving    C-b C-u          | "*y - PRIMARY
+\l        = show blank chars     | --Fugitive--                | around     H               | yyp - duplicate line
 \m        = remove Windows ^M    | :Git      = same as !git    |            { (             |
 \p        = format php file      | :G<cmd>   = run git command |     B gE   k               |
-\tn       = :tabnew              |                             | 0 ^ b ge h   l e w $       | --Copy-Paste--
-\to       = :tabonly             | --EasyAlign--               |            j   E W         | "+y - CLIPBOARD
-\tc       = :tabclose            | ga        = align           |          ) }               | "*y - PRIMARY
-\tm       = :tabmove             |                             |            L               | yyp - duplicate line
+\tn       = :tabnew              |                             | 0 ^ b ge h   l e w $       |
+\to       = :tabonly             | --EasyAlign--               |            j   E W         |
+\tc       = :tabclose            | ga        = align           |          ) }               |
+\tm       = :tabmove             |                             |            L               |
 \v        = edit .vimrc          |                             |           C-d C-f          |
 \w        = strip whitespaces    |                             |                            |
                                  |                             | '' last location           |
