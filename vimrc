@@ -48,6 +48,7 @@ Plugin 'git://github.com/tyru/open-browser.vim.git'
 Plugin 'git://github.com/junegunn/vim-easy-align.git'
 Plugin 'git://github.com/othree/html5.vim.git'
 Plugin 'git://github.com/violetyk/cake.vim'
+Plugin 'git://github.com/AndrewRadev/inline_edit.vim.git'
 
 call vundle#end()
 
@@ -362,7 +363,7 @@ map <leader>q :e ~/buffer<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-autocmd BufEnter *.ctp set syn=php
+autocmd BufRead,BufNewFile *.ctp set filetype=php
 
 " make tab in v mode ident code
 vmap <tab> >gv
@@ -474,6 +475,9 @@ let g:extra_whitespace_ignored_filetypes = ['unite', 'mkd']
 
 " delete fugitive hidden buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" InlineEdit
+nmap <leader> e :InlineEdit<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
