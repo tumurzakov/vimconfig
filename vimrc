@@ -459,6 +459,9 @@ let g:user_emmet_leader_key = '<c-y>'
 "-
 autocmd FileType php let b:surround_45 = "<?php \r ?>"
 
+"=
+autocmd FileType php let b:surround_61 = "<?php echo '\r'; ?>"
+
 "_
 autocmd FileType php let b:surround_95 = "<?php echo __('\r'); ?>"
 

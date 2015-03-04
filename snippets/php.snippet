@@ -29,6 +29,12 @@ snippet model
 	    ${2}
 	}
 
+snippet mcon
+	public function __construct($id = false, $table = null, $ds = null) {
+		parent::__construct($id, $table, $ds);
+		${1}
+	}
+
 # Form helper
 snippet form
 	<?php echo $this->Form->create(${1}); ?>
