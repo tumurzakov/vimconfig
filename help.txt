@@ -24,11 +24,11 @@ C-j,k,l,h = moving by windows    | \cu       = uncomment       | :bd! = close hi
 \to       = :tabonly             | --EasyAlign--               |            j   E W         |
 \tc       = :tabclose            | ga        = align           |          ) }               |
 \tm       = :tabmove             |                             |            L               |
-\v        = edit .vimrc          |                             |           C-d C-f          |
-\w        = strip whitespaces    |                             |                            |
-\e        = :InlineEdit          |                             | '' last location           |
-                                 |                             | '. last modification       |
+\v        = edit .vimrc          | --Misc--                    |           C-d C-f          |
+\w        = strip whitespaces    | q<reg>    = start/stop rec  |                            |
+\e        = :InlineEdit          | @<reg>    = run reg cmd     | '' last location           |
+\st       = surround tag         |                             | '. last modification       |
                                  |                             | %  matching bracket        |
-                                 |                             |                            |
+C-a       = increment numnber    |                             |                            |
                                  |                             |                            |
                                  |                             |                            |
