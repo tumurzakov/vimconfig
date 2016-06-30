@@ -23,11 +23,8 @@ Plugin 'git://github.com/ap/vim-css-color.git'
 Plugin 'git://github.com/tpope/vim-fugitive.git'
 Plugin 'git://github.com/airblade/vim-gitgutter.git'
 Plugin 'git://github.com/fatih/vim-go.git'
-Plugin 'git://github.com/tpope/vim-haml'
 Plugin 'git://github.com/pangloss/vim-javascript.git'
 Plugin 'git://github.com/tpope/vim-markdown.git'
-Plugin 'git://github.com/terryma/vim-multiple-cursors.git'
-Plugin 'git://github.com/arnaud-lb/vim-php-namespace.git'
 Plugin 'git://github.com/tpope/vim-repeat.git'
 Plugin 'git://github.com/Shougo/neocomplcache'
 Plugin 'git://github.com/Shougo/neosnippet'
@@ -36,18 +33,14 @@ Plugin 'git://github.com/honza/vim-snippets'
 Plugin 'git://github.com/tpope/vim-surround.git'
 Plugin 'git://github.com/bronson/vim-trailing-whitespace.git'
 Plugin 'git://github.com/xolox/vim-misc.git'
-Plugin 'git://github.com/xolox/vim-session.git'
 Plugin 'git://github.com/google/glaive'
 Plugin 'git://github.com/google/vim-maktaba'
 Plugin 'git://github.com/google/vim-codefmtlib'
 Plugin 'git://github.com/google/vim-codefmt'
 Plugin 'git://github.com/dericofilho/php.tools.git'
 Plugin 'git://github.com/sjl/gundo.vim.git'
-Plugin 'git://github.com/Shougo/unite.vim.git'
-Plugin 'git://github.com/tyru/open-browser.vim.git'
 Plugin 'git://github.com/junegunn/vim-easy-align.git'
 Plugin 'git://github.com/othree/html5.vim.git'
-Plugin 'git://github.com/violetyk/cake.vim'
 
 call vundle#end()
 
@@ -461,7 +454,6 @@ autocmd FileType php let b:surround_45 = "<?php \r ?>"
 "_
 autocmd FileType php let b:surround_95 = "<?php echo __('\r'); ?>"
 
-nnoremap <silent><F3> :call ToggleUnite()<CR>
 nnoremap <silent><F1> :call ToggleF1()<CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
@@ -568,19 +560,3 @@ fun! ToggleF1()
         let g:toggle_f1 = 1
     endif
 endfun
-
-fun! ToggleUnite()
-    set previewheight=28
-    if !exists("g:toggle_unite")
-        let g:toggle_unite = 0
-    endif
-
-    if g:toggle_unite == 1
-        :UniteClose
-        let g:toggle_unite = 0
-    else
-        :Unite file buffer
-        let g:toggle_unite = 1
-    endif
-endfun
-
