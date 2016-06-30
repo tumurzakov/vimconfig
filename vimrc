@@ -35,13 +35,15 @@ Plugin 'git://github.com/google/glaive'
 Plugin 'git://github.com/google/vim-maktaba'
 Plugin 'git://github.com/google/vim-codefmtlib'
 Plugin 'git://github.com/google/vim-codefmt'
+Plugin 'git://github.com/nsf/gocode', {'rtp': 'vim/'}
 Plugin 'git://github.com/dericofilho/php.tools.git'
 Plugin 'git://github.com/sjl/gundo.vim.git'
 Plugin 'git://github.com/Shougo/unite.vim.git'
 Plugin 'git://github.com/junegunn/vim-easy-align.git'
 Plugin 'git://github.com/othree/html5.vim.git'
-Plugin 'git://github.com/violetyk/cake.vim'
-Plugin 'git://github.com/AndrewRadev/inline_edit.vim.git'
+Plugin 'git://github.com/mhinz/vim-startify'
+Plugin 'git://github.com/dkprice/vim-easygrep'
+Plugin 'git://github.com/leshill/vim-json'
 
 call vundle#end()
 

@@ -24,10 +24,33 @@ snippet model
 	}
 
 snippet shell
-	<?php
-	class ${1} extends AppShell {
+    <?php
+	class ${1}Shell extends AppShell {
+	    public $uses = array('Model');
 	    public function main() {
+	        $audit = array(
+	            'shell'=>'Shell name',
+	            'started' => strftime("%F %T", time()),
+	        );
+
+	        try {
+	            $audit['result'] = $this->run();
+	        } catch(Exception $e) {
+	            $audit['status'] = 'error';
+	            $audit['error'] = $e->getMessage();
+	        }
+
+	        $audit['finished'] = strftime("%F %T", time());
+
+	        $this->Model->audit('message', 'main', $audit);
+
+	        $this->out(print_r($audit, true));
 	    }
+
+	    private function run() {
+	        return true;
+	    }
+
 	}
 
 snippet mcon
@@ -295,4 +318,3 @@ snippet reveal
 	<div id="filter-modal" class="reveal-modal" data-reveal>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
-
