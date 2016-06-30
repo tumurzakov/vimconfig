@@ -6,7 +6,6 @@ call vundle#begin('~/.vim/vundles')
 
 Plugin 'git://github.com/kien/ctrlp.vim.git'
 Plugin 'git://github.com/mattn/emmet-vim.git'
-Plugin 'git://github.com/vim-scripts/grep.vim'
 Plugin 'git://github.com/scrooloose/nerdcommenter.git'
 Plugin 'git://github.com/scrooloose/nerdtree.git'
 Plugin 'git://github.com/edkolev/promptline.vim.git'
@@ -16,8 +15,6 @@ Plugin 'git://github.com/godlygeek/tabular.git'
 Plugin 'git://github.com/majutsushi/tagbar.git'
 Plugin 'git://github.com/edkolev/tmuxline.vim.git'
 Plugin 'git://github.com/bling/vim-airline.git'
-Plugin 'git://github.com/gorodinskiy/vim-coloresque'
-Plugin 'git://github.com/altercation/vim-colors-solarized.git'
 Plugin 'git://github.com/hail2u/vim-css3-syntax'
 Plugin 'git://github.com/ap/vim-css-color.git'
 Plugin 'git://github.com/tpope/vim-fugitive.git'
@@ -37,10 +34,15 @@ Plugin 'git://github.com/google/glaive'
 Plugin 'git://github.com/google/vim-maktaba'
 Plugin 'git://github.com/google/vim-codefmtlib'
 Plugin 'git://github.com/google/vim-codefmt'
+Plugin 'git://github.com/nsf/gocode', {'rtp': 'vim/'}
 Plugin 'git://github.com/dericofilho/php.tools.git'
 Plugin 'git://github.com/sjl/gundo.vim.git'
+Plugin 'git://github.com/Shougo/unite.vim.git'
 Plugin 'git://github.com/junegunn/vim-easy-align.git'
 Plugin 'git://github.com/othree/html5.vim.git'
+Plugin 'git://github.com/mhinz/vim-startify'
+Plugin 'git://github.com/dkprice/vim-easygrep'
+Plugin 'git://github.com/leshill/vim-json'
 
 call vundle#end()
 
@@ -154,7 +156,6 @@ hi TagbarScope guifg=Green ctermfg=Green
 
 " syntax highlighting
 set bg=light
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -355,7 +356,7 @@ map <leader>q :e ~/buffer<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-autocmd BufEnter *.ctp set syn=php
+autocmd BufRead,BufNewFile *.ctp set filetype=php
 
 " make tab in v mode ident code
 vmap <tab> >gv
@@ -442,7 +443,7 @@ call maktaba#plugin#Detect()
 "autocmd BufWritePost *.php :call PhpFmt()
 nnoremap <silent><leader>p :call PhpFmt()<CR>
 
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <F4> :GundoToggle<CR>
 
 let g:user_emmet_leader_key = '<c-y>'
 
@@ -451,8 +452,12 @@ let g:user_emmet_leader_key = '<c-y>'
 "-
 autocmd FileType php let b:surround_45 = "<?php \r ?>"
 
+"=
+autocmd FileType php let b:surround_61 = "<?php echo \r; ?>"
+
 "_
 autocmd FileType php let b:surround_95 = "<?php echo __('\r'); ?>"
+nmap <leader>st :normal vitS_<CR>
 
 nnoremap <silent><F1> :call ToggleF1()<CR>
 
@@ -466,6 +471,12 @@ let g:extra_whitespace_ignored_filetypes = ['unite', 'mkd']
 
 " delete fugitive hidden buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" InlineEdit
+nmap <leader> e :InlineEdit<CR>
+
+" CakePHP
+let g:cakephp_enable_auto_mode = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

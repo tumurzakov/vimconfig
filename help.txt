@@ -7,7 +7,7 @@ F7        = filetype to html     | C-y k          = remove tag | --Visual mode--
 F8        = filetype to php      | C-y j          = join       |                            | :jumps   = show jumps
 F9        = open Tagbar          | C-y /          = comment    | * or # = search marked     | C-O,C-I  = moving by jumps
 F11       = enable paste mode    | C-y a          = make link  | Enter  = EasyAlign         | =        = indent
-                                 | c-y c          = escape     | r,d,o  = in C-v mode       |
+                                 | c-y c          = escape     | r,d,o  = in C-v mode       | R        = replace mode
 C-v       = vertical selection   |                             |                            |
 C-p       = ctrlp.vim            |  --NerdCommenter--          | --Commands--               | -- CakePHP --
 C-n       = multicursor          | \c$       = current line    | :Tabular /=/l5r1c0         | gf                = go to object
@@ -24,11 +24,11 @@ C-j,k,l,h = moving by windows    | \cu       = uncomment       | :bd! = close hi
 \to       = :tabonly             | --EasyAlign--               |            j   E W         |
 \tc       = :tabclose            | ga        = align           |          ) }               |
 \tm       = :tabmove             |                             |            L               |
-\v        = edit .vimrc          |                             |           C-d C-f          |
-\w        = strip whitespaces    |                             |                            |
-                                 |                             | '' last location           |
-                                 |                             | '. last modification       |
+\v        = edit .vimrc          | --Misc--                    |           C-d C-f          |
+\w        = strip whitespaces    | q<reg>    = start/stop rec  |                            |
+\e        = :InlineEdit          | @<reg>    = run reg cmd     | '' last location           |
+\st       = surround tag         |                             | '. last modification       |
                                  |                             | %  matching bracket        |
-                                 |                             |                            |
+C-a       = increment numnber    |                             |                            |
                                  |                             |                            |
                                  |                             |                            |

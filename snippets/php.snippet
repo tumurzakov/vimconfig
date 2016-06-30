@@ -1,16 +1,13 @@
 snippet func
 	public function ${1}() {
-	    ${2}
 	}
 
 snippet pfunc
 	private function ${1}() {
-	    ${2}
 	}
 
 snippet rfunc
 	protected function ${1}() {
-	    ${2}
 	}
 
 snippet cont
@@ -19,14 +16,46 @@ snippet cont
 	class ${1}Controller extends AppController {
 		public $scaffold;
 		public $components = array('Rest.Server');
-
-	    ${2}
 	}
 
 snippet model
 	<?php
 	class ${1} extends AppModel {
-	    ${2}
+	}
+
+snippet shell
+    <?php
+	class ${1}Shell extends AppShell {
+	    public $uses = array('Model');
+	    public function main() {
+	        $audit = array(
+	            'shell'=>'Shell name',
+	            'started' => strftime("%F %T", time()),
+	        );
+
+	        try {
+	            $audit['result'] = $this->run();
+	        } catch(Exception $e) {
+	            $audit['status'] = 'error';
+	            $audit['error'] = $e->getMessage();
+	        }
+
+	        $audit['finished'] = strftime("%F %T", time());
+
+	        $this->Model->audit('message', 'main', $audit);
+
+	        $this->out(print_r($audit, true));
+	    }
+
+	    private function run() {
+	        return true;
+	    }
+
+	}
+
+snippet mcon
+	public function __construct($id = false, $table = null, $ds = null) {
+		parent::__construct($id, $table, $ds);
 	}
 
 # Form helper
@@ -97,6 +126,9 @@ snippet findAllBy
 
 snippet field
 	$this->${1:ModelName}->field(${2:'${3:name}'}, ${4:'conditions'}, ${5:'order'});
+
+snippet uses
+	public $uses = array();
 
 # Session component & helper
 snippet sread
@@ -263,16 +295,26 @@ snippet __p
 
 # Model
 snippet act
-	var $actsAs = array('${1:BehaviorName}'${2: => ConfigForBehavior});
+	public $actsAs = array('${1:BehaviorName}'${2: => ConfigForBehavior});
 
 snippet bt
-	var $belongsTo = array('${1:Model}');
+	public $belongsTo = array('${1:Model}');
 
 snippet habtm
-	var $hasAndBelongsToMany = array('${1:Model}');
+	public $hasAndBelongsToMany = array('${1:Model}');
 
 snippet hm
-	var $hasMany = array('${1:Model}');
+	public $hasMany = array('${1:Model}');
 
 snippet ho
-	var $hasOne = array('${1:Model}');
+	public $hasOne = array('${1:Model}');
+
+# ctp files
+snippet scriptjs
+	<script type='text/javascript'>
+	</script>
+
+snippet reveal
+	<div id="filter-modal" class="reveal-modal" data-reveal>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
