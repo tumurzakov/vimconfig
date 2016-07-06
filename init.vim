@@ -68,7 +68,7 @@ let g:mapleader = "\\"
 nmap <leader>w :w!<cr>
 
 if has("autocmd")
-    autocmd bufwritepost .vimrc source $MYVIMRC
+    autocmd bufwritepost init.vim source $MYVIMRC
 endif
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
@@ -135,7 +135,7 @@ set ttyfast
 set mouse=a
 " Set this to the name of your terminal that supports mouse codes.
 " Must be one of: xterm, xterm2, netterm, dec, jsbterm, pterm
-set ttymouse=xterm2
+" set ttymouse=xterm2
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
