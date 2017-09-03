@@ -32,7 +32,7 @@ Plugin 'https://github.com/bronson/vim-trailing-whitespace.git'
 Plugin 'https://github.com/xolox/vim-misc.git'
 Plugin 'https://github.com/google/glaive'
 Plugin 'https://github.com/google/vim-maktaba'
-Plugin 'https://github.com/google/vim-codefmtlib'
+Plugin 'https://github.com/tumurzakov/vim-codefmtlib'
 Plugin 'https://github.com/google/vim-codefmt'
 Plugin 'https://github.com/nsf/gocode', {'rtp': 'vim/'}
 Plugin 'https://github.com/tumurzakov/php.tools.git'
