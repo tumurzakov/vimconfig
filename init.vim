@@ -451,7 +451,7 @@ if has('conceal')
 endif
 
 autocmd FileType javascript let b:codefmt_formatter = 'clang-format'
-call maktaba#plugin#Detect()
+"call maktaba#plugin#Detect()
 
 "autocmd BufWritePost *.php :call PhpFmt()
 nnoremap <silent><leader>p :call PhpFmt()<CR>
