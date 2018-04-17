@@ -43,6 +43,8 @@ Plugin 'git://github.com/othree/html5.vim.git'
 Plugin 'git://github.com/mhinz/vim-startify'
 Plugin 'git://github.com/dkprice/vim-easygrep'
 Plugin 'git://github.com/leshill/vim-json'
+Plugin 'git://github.com/mkitt/tabline.vim.git'
+Plugin 'git://github.com/ipoddubny/asterisk-vim.git'
 
 call vundle#end()
 
@@ -390,7 +392,18 @@ set undoreload=10000
 " syntax color complex things like @{${"foo"}}
 let perl_extended_vars = 1
 
-let NERDTreeDirArrows=0
+let g:NERDChristmasTree=1
+let g:NERDTreeAutoCenter=1
+let g:NERDTreeMouseMode=2
+let g:NERDTreeShowHidden=0
+let g:NERDTreeWinPos='left'
+let g:NERDTreeWinSize=25
+let g:NERDTreeChDirMode=2
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeDirArrows = 1 
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let NERDTreeIgnore = ['.*\.o$','.*\.gz$','.*\.zip$','\.pyc$','tags$']
 nmap <silent> ` :NERDTreeToggle<CR>
 nnoremap <silent> <F9> :TagbarToggle<CR>
 
