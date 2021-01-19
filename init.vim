@@ -45,6 +45,7 @@ Plugin 'git://github.com/dkprice/vim-easygrep'
 Plugin 'git://github.com/leshill/vim-json'
 Plugin 'git://github.com/mkitt/tabline.vim.git'
 Plugin 'git://github.com/ipoddubny/asterisk-vim.git'
+Plugin 'git://github.com/neoclide/coc.nvim.git'
 
 call vundle#end()
 
