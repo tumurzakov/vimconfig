@@ -35,7 +35,6 @@ Plugin 'git://github.com/google/vim-maktaba'
 Plugin 'git://github.com/tumurzakov/vim-codefmtlib'
 Plugin 'git://github.com/google/vim-codefmt'
 Plugin 'git://github.com/nsf/gocode', {'rtp': 'vim/'}
-Plugin 'git://github.com/tumurzakov/php.tools.git'
 Plugin 'git://github.com/sjl/gundo.vim.git'
 Plugin 'git://github.com/Shougo/unite.vim.git'
 Plugin 'git://github.com/junegunn/vim-easy-align.git'
@@ -46,6 +45,7 @@ Plugin 'git://github.com/leshill/vim-json'
 Plugin 'git://github.com/mkitt/tabline.vim.git'
 Plugin 'git://github.com/ipoddubny/asterisk-vim.git'
 Plugin 'git://github.com/neoclide/coc.nvim.git'
+Plugin 'git://github.com/stephpy/vim-php-cs-fixer.git'
 
 call vundle#end()
 
@@ -432,6 +432,7 @@ let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
 "neosnippet
+let g:neosnippet#snippets_directory = '~/.vim/snippets'
 let g:neosnippet#enable_snipmate_compatibility = 1
 " Plugin key-mappings.
 imap <leader>k    <Plug>(neosnippet_expand_or_jump)
@@ -452,10 +453,6 @@ if has('conceal')
 endif
 
 autocmd FileType javascript let b:codefmt_formatter = 'clang-format'
-"call maktaba#plugin#Detect()
-
-"autocmd BufWritePost *.php :call PhpFmt()
-nnoremap <silent><leader>p :call PhpFmt()<CR>
 
 nnoremap <F4> :GundoToggle<CR>
 
@@ -491,6 +488,41 @@ nmap <leader> e :InlineEdit<CR>
 
 " CakePHP
 let g:cakephp_enable_auto_mode = 1
+
+autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
+
+" CocSnippet
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -552,24 +584,6 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
-
-fun! PhpFmt()
-    let path = expand('%:p')
-    let command = "php ~/.vim/vundles/php.tools/fmt.php --no-backup --indent_with_space=4 --cakephp ".path
-    let s:lint = system('php -l '.path)
-    if v:shell_error
-        echohl Error | echo s:lint | echohl None
-    else
-        let s:output = system(command)
-        if v:shell_error
-            echohl Error | echo s:output | echohl None
-        else
-            exec 'edit!'
-            :set statusline="phpfmt: done"
-        endif
-    endif
-    :syntax on
-endfun
 
 fun! ToggleF1()
     set previewheight=50

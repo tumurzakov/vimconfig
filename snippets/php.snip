@@ -1,15 +1,3 @@
-snippet func
-	public function ${1}() {
-	}
-
-snippet pfunc
-	private function ${1}() {
-	}
-
-snippet rfunc
-	protected function ${1}() {
-	}
-
 snippet cont
 	<?php
 	App::uses('AppController', 'Controller');
@@ -316,10 +304,10 @@ snippet scriptjs
 
 # getter/setter
 
-snippet getter
-	public function get${1}() {
-        if (!isset($this->${1})) {
-            $this->${1} = ClassRegistry::init('${1}');
-        }
-        return $this->${1};
-    }
+snippet mocker
+	public function get${1:Model}() {
+	    if (!isset($this->$1)) {
+	        $this->$1 = ClassRegistry::init('$1');
+	    }
+	    return $this->$1;
+	}
