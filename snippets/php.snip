@@ -304,10 +304,66 @@ snippet scriptjs
 
 # getter/setter
 
-snippet mocker
+snippet tm
 	public function get${1:Model}() {
 	    if (!isset($this->$1)) {
 	        $this->$1 = ClassRegistry::init('$1');
 	    }
 	    return $this->$1;
+	}
+
+snippet tt
+	  /*
+	     * @test
+	     */
+	    public function test${1}()
+	    {
+	    }
+
+snippet tf
+	  /*
+	     * $1
+	     *
+	     * @param
+	     * @return
+	     * @throws
+	     */
+	    public function ${1:name}()
+	    {
+	    }
+
+snippet tc
+	/*
+	 * class $1
+	 */
+	class ${1:name} {
+	}
+
+snippet ti
+	/*
+	 * interface $1
+	 */
+	interface ${1:name} {
+	}
+
+snippet tg
+	  /*
+	     * get$1
+	     *
+	     * @return
+	     */
+	    public function get${1:name}()
+	    {
+	        return $this->$1;
+	    }
+
+snippet ts
+	  /*
+	     * set$1
+	     *
+	     * @param mixed $value
+	     */
+	public function set${1:name}($value)
+	{
+	    $this->$1 = $value;
 	}
