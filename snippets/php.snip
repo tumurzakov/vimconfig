@@ -1,20 +1,33 @@
 snippet cont
 	<?php
+	/**
+	 * Controller
+	 */
 	App::uses('AppController', 'Controller');
-	class ${1}Controller extends AppController {
+	class ${1:`Filename('$1', 'Controller')`} extends AppController {
 		public $scaffold;
 		public $components = array('Rest.Server');
 	}
 
 snippet model
 	<?php
-	class ${1} extends AppModel {
+	/**
+	 * Model
+	 */
+	class ${1:`Filename('$1', 'Model')`} extends AppModel {
 	}
 
 snippet shell
     <?php
-	class ${1}Shell extends AppShell {
+	/**
+	 * Shell
+	 */
+	class ${1:`Filename('$1', 'Shell')`} extends AppShell {
 	    public $uses = array('Model');
+
+	    /**
+	     * Default action
+	     */
 	    public function main() {
 	        $audit = array(
 	            'shell'=>'Shell name',
@@ -39,11 +52,6 @@ snippet shell
 	        return true;
 	    }
 
-	}
-
-snippet mcon
-	public function __construct($id = false, $table = null, $ds = null) {
-		parent::__construct($id, $table, $ds);
 	}
 
 # Form helper
@@ -304,7 +312,10 @@ snippet scriptjs
 
 # getter/setter
 
-snippet tm
+snippet mocker
+	/*
+	 * get get$1
+	 */
 	public function get${1:Model}() {
 	    if (!isset($this->$1)) {
 	        $this->$1 = ClassRegistry::init('$1');
@@ -312,58 +323,135 @@ snippet tm
 	    return $this->$1;
 	}
 
-snippet tt
-	  /*
-	     * @test
-	     */
-	    public function test${1}()
-	    {
-	    }
-
-snippet tf
-	  /*
-	     * $1
-	     *
-	     * @param
-	     * @return
-	     * @throws
-	     */
-	    public function ${1:name}()
-	    {
-	    }
-
-snippet tc
+snippet test
+options indent
 	/*
-	 * class $1
+	 * @test
 	 */
-	class ${1:name} {
+	public function test${1}()
+	{
 	}
 
-snippet ti
-	/*
-	 * interface $1
+snippet method
+options indent
+	/**
+	 * $1
+	 *
+	 * @param
+	 * @return
+	 * @throws
 	 */
-	interface ${1:name} {
+	public function ${1:name}()
+	{
 	}
 
-snippet tg
-	  /*
-	     * get$1
-	     *
-	     * @return
-	     */
-	    public function get${1:name}()
-	    {
-	        return $this->$1;
-	    }
+snippet class
+	/**
+	 * Class $1
+	 */
+	class ${1:`Filename('$1', 'Classname')`} {
+	}
 
-snippet ts
-	  /*
-	     * set$1
-	     *
-	     * @param mixed $value
-	     */
-	public function set${1:name}($value)
+snippet iface
+	/**
+	 * Interface $1
+	 */
+	interface ${1:`Filename('$1', 'Interface')`} {
+	}
+
+snippet getter
+options indent
+	/**
+	 * Getter
+	 *
+	 * @return $1
+	 */
+	public function get${1:name}() : $1
+	{
+	    return $this->$1;
+	}
+
+snippet setter
+options indent
+	/**
+	 * Setter
+	 *
+	 * @param $1 $value
+	 */
+	public function set${1:name}($value) : void
 	{
 	    $this->$1 = $value;
+	}
+
+snippet usecase
+	<?php
+
+	namespace BillEngine\Domain\Usecase;
+
+	/**
+	 * Usecase $1
+	 */
+	class ${1:`Filename('$1', 'Usecase')`}
+	{
+	    /**
+	     * Process usecase
+	     *
+	     * @param
+	     *
+	     * @return
+	     *
+	     * @throws
+	     */
+	    public function process()
+	    {
+	    }
+	}
+
+snippet entity
+	<?php
+
+	namespace BillEngine\Domain\\${1:`Filename('$1', 'Entity')`};
+
+	/**
+	 * Entity $1
+	 */
+	class $1
+	{
+	}
+
+snippet service
+	<?php
+
+	namespace BillEngine\Domain\\${1:`Filename('$1', 'Service')`};
+
+	/**
+	 * Entity $1
+	 */
+	class $1
+	{
+	}
+
+snippet collection
+	<?php
+	namespace BillEngine\Domain\\${2:Entity};
+
+	/**
+	 * Collection $1
+	 */
+	class ${1:`Filename('$1', 'Collection')`} extends \ArrayObject
+	{
+	    /*
+	     * offsetSet checking type of inserting object
+	     *
+	     * @param string $key Key of collection
+	     * @param $2 $val
+	     * @throws \InvalidArgumentException
+	     */
+	    public function offsetSet($key, $val)
+	    {
+	        if ($val instanceof $2) {
+	            return parent::offsetSet($key, $val);
+	        }
+	        throw new \InvalidArgumentException('Wrong collection value');
+	    }
 	}
