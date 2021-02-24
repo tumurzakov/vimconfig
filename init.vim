@@ -50,6 +50,9 @@ Plugin 'git://github.com/bkad/CamelCaseMotion.git'
 Plugin 'git://github.com/ludovicchabant/vim-gutentags.git'
 Plugin 'git://github.com/nelsyeung/twig.vim.git'
 Plugin 'git://github.com/vim-vdebug/vdebug.git'
+Plugin 'git://github.com/dbakker/vim-projectroot.git'
+Plugin 'git://github.com/phpactor/phpactor.git'
+Plugin 'git://github.com/camilledejoye/phpactor-mappings.git'
 
 
 call vundle#end()
@@ -515,13 +518,24 @@ sunmap ge
 
 "gutentags
 let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js']
+let g:gutentags_cache_dir = '~/.vim/gutentags'
+:nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
 
 "vdebug
 
 if !exists('g:vdebug_options')
     let g:vdebug_options = {}
 endif
-"let g:vdebug_options.server = "172.17.0.1"
+
+"projectroot
+let g:rootmarkers = ['.projectroot', 'docker-compose.yml', '.git', '.hg', '.svn', '.bzr','_darcs','build.xml']
+
+function! SetupDebug()
+    let g:vdebug_options['path_maps'] = {'/app': call('projectroot#get', a:000)}
+    " Hack to override vdebug options
+    source ~/.vim/vundles/vdebug/plugin/vdebug.vim
+endfunction
+autocmd VimEnter * :call SetupDebug()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC
@@ -669,6 +683,23 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" phpactor
+nmap <silent> <leader>pm :PhpactorContextMenu<CR>
+nmap <silent> <leader>pa :PhpactorGenerateAccessor<CR>
+nmap <silent> <leader>pt :PhpactorTransform<CR>
+nmap <silent> <leader>pi :PhpactorImportMissingClasses<CR>
+nmap <silent> <leader>pe :PhpactorExtractMethod<CR>
+nmap <silent> <leader>pf :PhpactorClassInflect<CR>
+nmap <silent> <leader>px :PhpactorClassExpand<CR>
+
+xmap <silent> <leader>pm :PhpactorContextMenu<CR>
+xmap <silent> <leader>pa :PhpactorGenerateAccessor<CR>
+xmap <silent> <leader>pt :PhpactorTransform<CR>
+xmap <silent> <leader>pi :PhpactorImportMissingClasses<CR>
+xmap <silent> <leader>pe :PhpactorExtractMethod<CR>
+xmap <silent> <leader>pf :PhpactorClassInflect<CR>
+xmap <silent> <leader>px :PhpactorClassExpand<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

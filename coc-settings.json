@@ -5,6 +5,22 @@
       "rootPatterns": ["go.mod"],
       "trace.server": "verbose",
       "filetypes": ["go"]
+    },
+
+    "phpactor": {
+      "command": "~/.vim/vundles/phpactor/bin/phpactor",
+      "args": ["language-server"],
+      "trace.server": "verbose",
+      "filetypes": ["php"]
+    },
+
+    "intelephense": {
+      "command": "/root/.config/coc/extensions/node_modules/coc-phpls/node_modules/.bin/intelephense",
+      "args": ["--stdio"],
+      "filetypes": ["php"],
+      "initializationOptions": {
+          "storagePath": "/tmp/intelephense"
+      }
     }
   }
 }
