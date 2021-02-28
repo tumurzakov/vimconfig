@@ -53,6 +53,7 @@ Plugin 'git://github.com/vim-vdebug/vdebug.git'
 Plugin 'git://github.com/dbakker/vim-projectroot.git'
 Plugin 'git://github.com/phpactor/phpactor.git'
 Plugin 'git://github.com/camilledejoye/phpactor-mappings.git'
+Plugin 'git://github.com/editorconfig/editorconfig-vim.git'
 
 
 call vundle#end()
@@ -413,7 +414,7 @@ let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let NERDTreeIgnore = ['.*\.o$','.*\.gz$','.*\.zip$','\.pyc$','tags$']
-nmap <silent> ` :NERDTreeToggle<CR>
+nmap <silent> ` :ProjectRootExe NERDTreeToggle<CR>
 nnoremap <silent> <F9> :TagbarToggle<CR>
 
 set keywordprg=pman
@@ -504,6 +505,9 @@ nmap <leader> e :InlineEdit<CR>
 " CakePHP
 let g:cakephp_enable_auto_mode = 1
 
+" php-cs-fixer
+nnoremap <silent><leader>d :call PhpCsFixerFixDirectory()<CR>
+nnoremap <silent><leader>f :call PhpCsFixerFixFile()<CR>
 autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
 
 "CamelCaseMotion
