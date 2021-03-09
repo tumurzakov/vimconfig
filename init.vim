@@ -688,22 +688,35 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" phpactor
-nmap <silent> <leader>pm :PhpactorContextMenu<CR>
-nmap <silent> <leader>pa :PhpactorGenerateAccessor<CR>
-nmap <silent> <leader>pt :PhpactorTransform<CR>
-nmap <silent> <leader>pi :PhpactorImportMissingClasses<CR>
-nmap <silent> <leader>pe :PhpactorExtractMethod<CR>
-nmap <silent> <leader>pf :PhpactorClassInflect<CR>
-nmap <silent> <leader>px :PhpactorClassExpand<CR>
+"PhpActor
 
-xmap <silent> <leader>pm :PhpactorContextMenu<CR>
-xmap <silent> <leader>pa :PhpactorGenerateAccessor<CR>
-xmap <silent> <leader>pt :PhpactorTransform<CR>
-xmap <silent> <leader>pi :PhpactorImportMissingClasses<CR>
-xmap <silent> <leader>pe :PhpactorExtractMethod<CR>
-xmap <silent> <leader>pf :PhpactorClassInflect<CR>
-xmap <silent> <leader>px :PhpactorClassExpand<CR>
+augroup PhpactorMappings
+  au!
+  au FileType php nmap <buffer> <Leader>u :PhpactorImportClass<CR>
+  au FileType php nmap <buffer> <Leader>e :PhpactorClassExpand<CR>
+  au FileType php nmap <buffer> <Leader>ua :PhpactorImportMissingClasses<CR>
+  au FileType php nmap <buffer> <Leader>mm :PhpactorContextMenu<CR>
+  au FileType php nmap <buffer> <Leader>nn :PhpactorNavigate<CR>
+  au FileType php nmap <buffer> <Leader>aa :PhpactorGenerateAccessor<CR>
+  au FileType php,cucumber nmap <buffer> <Leader>o
+      \ :PhpactorGotoDefinition edit<CR>
+  au FileType php nmap <buffer> <Leader>K :PhpactorHover<CR>
+  au FileType php nmap <buffer> <Leader>tt :PhpactorTransform<CR>
+  au FileType php nmap <buffer> <Leader>cc :PhpactorClassNew<CR>
+  au FileType php nmap <buffer> <Leader>ci :PhpactorClassInflect<CR>
+  au FileType php nmap <buffer> <Leader>fr :PhpactorFindReferences<CR>
+  au FileType php nmap <buffer> <Leader>mf :PhpactorMoveFile<CR>
+  au FileType php nmap <buffer> <Leader>cf :PhpactorCopyFile<CR>
+  au FileType php nmap <buffer> <silent> <Leader>ee
+      \ :PhpactorExtractExpression<CR>
+  au FileType php vmap <buffer> <silent> <Leader>ee
+      \ :<C-u>PhpactorExtractExpression<CR>
+  au FileType php vmap <buffer> <silent> <Leader>em
+      \ :<C-u>PhpactorExtractMethod<CR>
+augroup END
+
+"EasyGrep
+let g:EasyGrepFilesToExclude=".svn,.git,tags"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
