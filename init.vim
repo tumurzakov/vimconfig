@@ -18,7 +18,6 @@ Plugin 'git://github.com/hail2u/vim-css3-syntax'
 Plugin 'git://github.com/ap/vim-css-color.git'
 Plugin 'git://github.com/tpope/vim-fugitive.git'
 Plugin 'git://github.com/airblade/vim-gitgutter.git'
-Plugin 'git://github.com/fatih/vim-go.git'
 Plugin 'git://github.com/pangloss/vim-javascript.git'
 Plugin 'git://github.com/tpope/vim-markdown.git'
 Plugin 'git://github.com/tpope/vim-repeat.git'
@@ -202,6 +201,8 @@ set wrap "Wrap lines
 set autoindent
 set smartindent
 set softtabstop=4
+
+set list
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -430,7 +431,7 @@ set t_Co=256
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
 
-set lcs=tab:.\ ,eol:¬
+set lcs=tab:.\ 
 
 " grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
@@ -643,12 +644,12 @@ omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  nnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
+  nnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
+  inoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
+  vnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
 endif
 
 " Use CTRL-S for selections ranges.
