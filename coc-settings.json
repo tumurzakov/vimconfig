@@ -16,7 +16,7 @@
     },
 
     "intelephense": {
-      "command": "/root/.config/coc/extensions/node_modules/coc-phpls/node_modules/.bin/intelephense",
+      "command": "~/.config/coc/extensions/node_modules/coc-phpls/node_modules/.bin/intelephense",
       "args": ["--stdio"],
       "filetypes": ["php"],
       "initializationOptions": {
