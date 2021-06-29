@@ -47,7 +47,6 @@ Plugin 'git://github.com/fatih/vim-go.git'
 Plugin 'git://github.com/AndrewRadev/splitjoin.vim.git'
 Plugin 'git://github.com/junegunn/fzf.git'
 Plugin 'git://github.com/junegunn/fzf.vim.git'
-Plugin 'git://github.com/vim-syntastic/syntastic.git'
 
 
 call vundle#end()
@@ -396,6 +395,10 @@ if executable("rg")
     set grepprg=rg\ --vimgrep
 endif
 
+"strange characters
+let &t_TI = ""
+let &t_TE = ""
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -419,19 +422,6 @@ nmap <silent> ` :ProjectRootExe NERDTreeToggle<CR>
 nnoremap <silent> <F9> :TagbarToggle<CR>
 
 set keywordprg=pman
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_yaml_checkers = ['yamllint']
 
 " airline
 let g:airline_powerline_fonts = 1
