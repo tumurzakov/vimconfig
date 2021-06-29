@@ -10,7 +10,6 @@ Plugin 'git://github.com/scrooloose/nerdcommenter.git'
 Plugin 'git://github.com/scrooloose/nerdtree.git'
 Plugin 'git://github.com/edkolev/promptline.vim.git'
 Plugin 'git://github.com/ervandew/supertab.git'
-Plugin 'git://github.com/godlygeek/tabular.git'
 Plugin 'git://github.com/majutsushi/tagbar.git'
 Plugin 'git://github.com/edkolev/tmuxline.vim.git'
 Plugin 'git://github.com/bling/vim-airline.git'
@@ -24,35 +23,31 @@ Plugin 'git://github.com/tpope/vim-repeat.git'
 Plugin 'git://github.com/Shougo/neocomplcache'
 Plugin 'git://github.com/Shougo/neosnippet'
 Plugin 'git://github.com/Shougo/neosnippet-snippets'
-Plugin 'git://github.com/honza/vim-snippets'
 Plugin 'git://github.com/tpope/vim-surround.git'
 Plugin 'git://github.com/bronson/vim-trailing-whitespace.git'
 Plugin 'git://github.com/xolox/vim-misc.git'
-Plugin 'git://github.com/google/glaive'
-Plugin 'git://github.com/google/vim-maktaba'
-Plugin 'git://github.com/tumurzakov/vim-codefmtlib'
-Plugin 'git://github.com/google/vim-codefmt'
-Plugin 'git://github.com/nsf/gocode', {'rtp': 'vim/'}
 Plugin 'git://github.com/sjl/gundo.vim.git'
-Plugin 'git://github.com/Shougo/unite.vim.git'
 Plugin 'git://github.com/junegunn/vim-easy-align.git'
 Plugin 'git://github.com/othree/html5.vim.git'
 Plugin 'git://github.com/mhinz/vim-startify'
 Plugin 'git://github.com/dkprice/vim-easygrep'
 Plugin 'git://github.com/leshill/vim-json'
 Plugin 'git://github.com/mkitt/tabline.vim.git'
-Plugin 'git://github.com/ipoddubny/asterisk-vim.git'
 Plugin 'git://github.com/neoclide/coc.nvim.git'
 Plugin 'git://github.com/stephpy/vim-php-cs-fixer.git'
 Plugin 'git://github.com/vim-scripts/phpcs.vim.git'
 Plugin 'git://github.com/bkad/CamelCaseMotion.git'
 Plugin 'git://github.com/ludovicchabant/vim-gutentags.git'
 Plugin 'git://github.com/nelsyeung/twig.vim.git'
-Plugin 'git://github.com/vim-vdebug/vdebug.git'
 Plugin 'git://github.com/dbakker/vim-projectroot.git'
 Plugin 'git://github.com/phpactor/phpactor.git'
 Plugin 'git://github.com/camilledejoye/phpactor-mappings.git'
 Plugin 'git://github.com/editorconfig/editorconfig-vim.git'
+Plugin 'git://github.com/fatih/vim-go.git'
+Plugin 'git://github.com/AndrewRadev/splitjoin.vim.git'
+Plugin 'git://github.com/junegunn/fzf.git'
+Plugin 'git://github.com/junegunn/fzf.vim.git'
+Plugin 'git://github.com/vim-syntastic/syntastic.git'
 
 
 call vundle#end()
@@ -221,17 +216,17 @@ map j gj
 map k gk
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-"map <space> /
-"map <c-space> ?
+" map <space> /
+" map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" map <C-j> <C-W>j
+" map <C-k> <C-W>k
+" map <C-h> <C-W>h
+" map <C-l> <C-W>l
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -310,7 +305,7 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 nnoremap <leader>w :call <SID>StripTrailingWhitespaces()<CR>
-autocmd BufWritePre *.py,*.js,*.php,*.ctp :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.py,*.js,*.html,*.md,*.php,*.ctp,*.yml,*.yaml :call <SID>StripTrailingWhitespaces()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vimgrep searching and cope displaying
@@ -348,13 +343,13 @@ vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
+" map <leader>ss :setlocal spell!<cr>
 
 " Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+" map <leader>sn ]s
+" map <leader>sp [s
+" map <leader>sa zg
+" map <leader>s? z=
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -381,20 +376,25 @@ nmap <s-tab> ^i<bs><esc>
 
 " paste mode - this will avoid unexpected effects when you
 " cut or copy some text from one window and paste it in Vim.
-set pastetoggle=<F11>
+" set pastetoggle=<F11>
 
 " comment/uncomment blocks of code (in vmode)
 "vmap _c :s/^/#/gi<Enter>
 "vmap _C :s/^#//gi<Enter>
 
-map <F7> :set filetype=html<CR>
-map <F8> :set filetype=php<CR>
+" map <F7> :set filetype=html<CR>
+" map <F8> :set filetype=php<CR>
 
 "undo
 set undodir=~/.vim/undodir
 set undofile
 set undolevels=1000
 set undoreload=10000
+
+"grep search with rg
+if executable("rg")
+    set grepprg=rg\ --vimgrep
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -420,6 +420,16 @@ nnoremap <silent> <F9> :TagbarToggle<CR>
 
 set keywordprg=pman
 
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_yaml_checkers = ['yamllint']
 
@@ -431,14 +441,11 @@ set t_Co=256
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
 
-set lcs=tab:.\ 
-
-" grep.vim
-nnoremap <silent> <leader>f :Rgrep<CR>
-let Grep_Default_Options = '-IR'
+set lcs=tab:.\
 
 let g:javascript_enable_domhtmlcss = 1
 
+" sessions
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
@@ -471,8 +478,10 @@ let g:neosnippet#enable_complete_done = 1
 
 autocmd FileType javascript let b:codefmt_formatter = 'clang-format'
 
+" gundo
 nnoremap <F4> :GundoToggle<CR>
 
+" emmet
 let g:user_emmet_leader_key = '<c-y>'
 
 "surround
@@ -481,11 +490,7 @@ let g:user_emmet_leader_key = '<c-y>'
 autocmd FileType php let b:surround_45 = "<?php \r ?>"
 
 "=
-autocmd FileType php let b:surround_61 = "<?php echo \r; ?>"
-
-"_
-autocmd FileType php let b:surround_95 = "<?php echo __('\r'); ?>"
-nmap <leader>st :normal vitS_<CR>
+autocmd FileType php let b:surround_61 = "<?= \r; ?>"
 
 nnoremap <silent><F1> :call ToggleF1()<CR>
 
@@ -500,11 +505,10 @@ let g:extra_whitespace_ignored_filetypes = ['unite', 'mkd']
 " delete fugitive hidden buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-" InlineEdit
-nmap <leader> e :InlineEdit<CR>
-
-" CakePHP
-let g:cakephp_enable_auto_mode = 1
+" Fugitive Conflict Resolution
+nnoremap <leader>gd :Gvdiff!<CR>
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
 
 " php-cs-fixer
 nnoremap <silent><leader>d :call PhpCsFixerFixDirectory()<CR>
@@ -526,21 +530,18 @@ let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js']
 let g:gutentags_cache_dir = '~/.vim/gutentags'
 :nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
 
-"vdebug
-
-if !exists('g:vdebug_options')
-    let g:vdebug_options = {}
-endif
-
 "projectroot
 let g:rootmarkers = ['.projectroot', 'docker-compose.yml', '.git', '.hg', '.svn', '.bzr','_darcs','build.xml']
 
-function! SetupDebug()
-    let g:vdebug_options['path_maps'] = {'/app': call('projectroot#get', a:000)}
-    " Hack to override vdebug options
-    source ~/.vim/vundles/vdebug/plugin/vdebug.vim
-endfunction
-autocmd VimEnter * :call SetupDebug()
+"splitjoin
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+
+nmap <Leader>j :SplitjoinJoin<cr>
+nmap <Leader>s :SplitjoinSplit<cr>
+
+"fzf
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC
