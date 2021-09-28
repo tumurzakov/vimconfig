@@ -24,7 +24,6 @@ Plugin 'git://github.com/Shougo/neocomplcache'
 Plugin 'git://github.com/Shougo/neosnippet'
 Plugin 'git://github.com/Shougo/neosnippet-snippets'
 Plugin 'git://github.com/tpope/vim-surround.git'
-Plugin 'git://github.com/bronson/vim-trailing-whitespace.git'
 Plugin 'git://github.com/xolox/vim-misc.git'
 Plugin 'git://github.com/sjl/gundo.vim.git'
 Plugin 'git://github.com/junegunn/vim-easy-align.git'
@@ -196,7 +195,14 @@ set autoindent
 set smartindent
 set softtabstop=4
 
-set list
+"set list
+"set lcs=tab:.\ 
+highlight default WhiteSpaces ctermbg=LightGrey
+match WhiteSpaces /	\+/
+
+highlight ExtraWhitespace ctermbg=darkred guibg=darkred
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=darkred
+autocmd ColorScheme * highlight default WhiteSpaces ctermbg=LightGrey | match WhiteSpaces /	\+/
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -231,7 +237,7 @@ map <silent> <leader><cr> :noh<cr>
 map <leader>bd :Bclose<cr>
 
 " Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
+" map <leader>ba :1,100 bd!<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -399,6 +405,9 @@ endif
 let &t_TI = ""
 let &t_TE = ""
 
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -427,11 +436,6 @@ set keywordprg=pman
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'kolor'
 set t_Co=256
-
-" Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
-
-set lcs=tab:.\
 
 let g:javascript_enable_domhtmlcss = 1
 
@@ -532,6 +536,36 @@ nmap <Leader>s :SplitjoinSplit<cr>
 
 "fzf
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+
+"PhpActor
+
+augroup PhpactorMappings
+  au!
+  au FileType php nmap <buffer> <Leader>u :PhpactorImportClass<CR>
+  au FileType php nmap <buffer> <Leader>e :PhpactorClassExpand<CR>
+  au FileType php nmap <buffer> <Leader>ua :PhpactorImportMissingClasses<CR>
+  au FileType php nmap <buffer> <Leader>mm :PhpactorContextMenu<CR>
+  au FileType php nmap <buffer> <Leader>nn :PhpactorNavigate<CR>
+  au FileType php nmap <buffer> <Leader>aa :PhpactorGenerateAccessor<CR>
+  au FileType php,cucumber nmap <buffer> <Leader>o
+      \ :PhpactorGotoDefinition edit<CR>
+  au FileType php nmap <buffer> <Leader>K :PhpactorHover<CR>
+  au FileType php nmap <buffer> <Leader>tt :PhpactorTransform<CR>
+  au FileType php nmap <buffer> <Leader>cc :PhpactorClassNew<CR>
+  au FileType php nmap <buffer> <Leader>ci :PhpactorClassInflect<CR>
+  au FileType php nmap <buffer> <Leader>fr :PhpactorFindReferences<CR>
+  au FileType php nmap <buffer> <Leader>mf :PhpactorMoveFile<CR>
+  au FileType php nmap <buffer> <Leader>cf :PhpactorCopyFile<CR>
+  au FileType php nmap <buffer> <silent> <Leader>ee
+      \ :PhpactorExtractExpression<CR>
+  au FileType php vmap <buffer> <silent> <Leader>ee
+      \ :<C-u>PhpactorExtractExpression<CR>
+  au FileType php vmap <buffer> <silent> <Leader>em
+      \ :<C-u>PhpactorExtractMethod<CR>
+augroup END
+
+"EasyGrep
+let g:EasyGrepFilesToExclude=".svn,.git,tags"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC
@@ -680,35 +714,32 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-"PhpActor
+"coc-snippet
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
 
-augroup PhpactorMappings
-  au!
-  au FileType php nmap <buffer> <Leader>u :PhpactorImportClass<CR>
-  au FileType php nmap <buffer> <Leader>e :PhpactorClassExpand<CR>
-  au FileType php nmap <buffer> <Leader>ua :PhpactorImportMissingClasses<CR>
-  au FileType php nmap <buffer> <Leader>mm :PhpactorContextMenu<CR>
-  au FileType php nmap <buffer> <Leader>nn :PhpactorNavigate<CR>
-  au FileType php nmap <buffer> <Leader>aa :PhpactorGenerateAccessor<CR>
-  au FileType php,cucumber nmap <buffer> <Leader>o
-      \ :PhpactorGotoDefinition edit<CR>
-  au FileType php nmap <buffer> <Leader>K :PhpactorHover<CR>
-  au FileType php nmap <buffer> <Leader>tt :PhpactorTransform<CR>
-  au FileType php nmap <buffer> <Leader>cc :PhpactorClassNew<CR>
-  au FileType php nmap <buffer> <Leader>ci :PhpactorClassInflect<CR>
-  au FileType php nmap <buffer> <Leader>fr :PhpactorFindReferences<CR>
-  au FileType php nmap <buffer> <Leader>mf :PhpactorMoveFile<CR>
-  au FileType php nmap <buffer> <Leader>cf :PhpactorCopyFile<CR>
-  au FileType php nmap <buffer> <silent> <Leader>ee
-      \ :PhpactorExtractExpression<CR>
-  au FileType php vmap <buffer> <silent> <Leader>ee
-      \ :<C-u>PhpactorExtractExpression<CR>
-  au FileType php vmap <buffer> <silent> <Leader>em
-      \ :<C-u>PhpactorExtractMethod<CR>
-augroup END
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
 
-"EasyGrep
-let g:EasyGrepFilesToExclude=".svn,.git,tags"
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
+
+" coc-snippets
+fun! SetupCommandAlias(from, to)
+    exec 'cnoreabbrev <expr> '.a:from
+                \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+                \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfun
+call SetupCommandAlias("snippets", "CocCommand snippets.editSnippets")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
