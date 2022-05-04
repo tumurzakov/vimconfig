@@ -4,48 +4,51 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/vundles')
 
-Plugin 'git://github.com/kien/ctrlp.vim.git'
-Plugin 'git://github.com/mattn/emmet-vim.git'
-Plugin 'git://github.com/scrooloose/nerdcommenter.git'
-Plugin 'git://github.com/scrooloose/nerdtree.git'
-Plugin 'git://github.com/edkolev/promptline.vim.git'
-Plugin 'git://github.com/ervandew/supertab.git'
-Plugin 'git://github.com/majutsushi/tagbar.git'
-Plugin 'git://github.com/edkolev/tmuxline.vim.git'
-Plugin 'git://github.com/bling/vim-airline.git'
-Plugin 'git://github.com/hail2u/vim-css3-syntax'
-Plugin 'git://github.com/ap/vim-css-color.git'
-Plugin 'git://github.com/tpope/vim-fugitive.git'
-Plugin 'git://github.com/airblade/vim-gitgutter.git'
-Plugin 'git://github.com/pangloss/vim-javascript.git'
-Plugin 'git://github.com/tpope/vim-markdown.git'
-Plugin 'git://github.com/tpope/vim-repeat.git'
-Plugin 'git://github.com/Shougo/neocomplcache'
-Plugin 'git://github.com/Shougo/neosnippet'
-Plugin 'git://github.com/Shougo/neosnippet-snippets'
-Plugin 'git://github.com/tpope/vim-surround.git'
-Plugin 'git://github.com/xolox/vim-misc.git'
-Plugin 'git://github.com/sjl/gundo.vim.git'
-Plugin 'git://github.com/junegunn/vim-easy-align.git'
-Plugin 'git://github.com/othree/html5.vim.git'
-Plugin 'git://github.com/mhinz/vim-startify'
-Plugin 'git://github.com/dkprice/vim-easygrep'
-Plugin 'git://github.com/leshill/vim-json'
-Plugin 'git://github.com/mkitt/tabline.vim.git'
-Plugin 'git://github.com/neoclide/coc.nvim.git'
-Plugin 'git://github.com/stephpy/vim-php-cs-fixer.git'
-Plugin 'git://github.com/vim-scripts/phpcs.vim.git'
-Plugin 'git://github.com/bkad/CamelCaseMotion.git'
-Plugin 'git://github.com/ludovicchabant/vim-gutentags.git'
-Plugin 'git://github.com/nelsyeung/twig.vim.git'
-Plugin 'git://github.com/dbakker/vim-projectroot.git'
-Plugin 'git://github.com/phpactor/phpactor.git'
-Plugin 'git://github.com/camilledejoye/phpactor-mappings.git'
-Plugin 'git://github.com/editorconfig/editorconfig-vim.git'
-Plugin 'git://github.com/fatih/vim-go.git'
-Plugin 'git://github.com/AndrewRadev/splitjoin.vim.git'
-Plugin 'git://github.com/junegunn/fzf.git'
-Plugin 'git://github.com/junegunn/fzf.vim.git'
+Plugin 'git@github.com:kien/ctrlp.vim.git'
+Plugin 'git@github.com:mattn/emmet-vim.git'
+Plugin 'git@github.com:scrooloose/nerdcommenter.git'
+Plugin 'git@github.com:scrooloose/nerdtree.git'
+Plugin 'git@github.com:edkolev/promptline.vim.git'
+Plugin 'git@github.com:ervandew/supertab.git'
+Plugin 'git@github.com:majutsushi/tagbar.git'
+Plugin 'git@github.com:edkolev/tmuxline.vim.git'
+Plugin 'git@github.com:bling/vim-airline.git'
+Plugin 'git@github.com:hail2u/vim-css3-syntax'
+Plugin 'git@github.com:ap/vim-css-color.git'
+Plugin 'git@github.com:tpope/vim-fugitive.git'
+Plugin 'git@github.com:airblade/vim-gitgutter.git'
+Plugin 'git@github.com:pangloss/vim-javascript.git'
+Plugin 'git@github.com:tpope/vim-markdown.git'
+Plugin 'git@github.com:tpope/vim-repeat.git'
+Plugin 'git@github.com:Shougo/neocomplcache'
+Plugin 'git@github.com:tpope/vim-surround.git'
+Plugin 'git@github.com:xolox/vim-misc.git'
+Plugin 'git@github.com:sjl/gundo.vim.git'
+Plugin 'git@github.com:junegunn/vim-easy-align.git'
+Plugin 'git@github.com:othree/html5.vim.git'
+Plugin 'git@github.com:mhinz/vim-startify'
+Plugin 'git@github.com:dkprice/vim-easygrep'
+Plugin 'git@github.com:leshill/vim-json'
+Plugin 'git@github.com:mkitt/tabline.vim.git'
+Plugin 'git@github.com:neoclide/coc.nvim.git'
+Plugin 'git@github.com:stephpy/vim-php-cs-fixer.git'
+Plugin 'git@github.com:vim-scripts/phpcs.vim.git'
+Plugin 'git@github.com:bkad/CamelCaseMotion.git'
+Plugin 'git@github.com:ludovicchabant/vim-gutentags.git'
+Plugin 'git@github.com:nelsyeung/twig.vim.git'
+Plugin 'git@github.com:dbakker/vim-projectroot.git'
+Plugin 'git@github.com:phpactor/phpactor.git'
+Plugin 'git@github.com:camilledejoye/phpactor-mappings.git'
+Plugin 'git@github.com:editorconfig/editorconfig-vim.git'
+Plugin 'git@github.com:fatih/vim-go.git'
+Plugin 'git@github.com:AndrewRadev/splitjoin.vim.git'
+Plugin 'git@github.com:junegunn/fzf.git'
+Plugin 'git@github.com:junegunn/fzf.vim.git'
+Plugin 'git@github.com:sniphpets/sniphpets.git'
+Plugin 'git@github.com:sniphpets/sniphpets-common.git'
+Plugin 'git@github.com:sniphpets/sniphpets-symfony.git'
+Plugin 'git@github.com:sniphpets/sniphpets-doctrine.git'
+Plugin 'git@github.com:sniphpets/sniphpets-phpunit.git'
 
 
 call vundle#end()
@@ -197,7 +200,7 @@ set softtabstop=4
 
 "set list
 "set lcs=tab:.\ 
-highlight default WhiteSpaces ctermbg=LightGrey
+highlight default WhiteSpaces ctermbg=015
 match WhiteSpaces /	\+/
 
 highlight ExtraWhitespace ctermbg=darkred guibg=darkred
@@ -443,33 +446,6 @@ let g:javascript_enable_domhtmlcss = 1
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
-"neosnippet
-let g:neosnippet#snippets_directory = '~/.vim/snippets'
-let g:neosnippet#enable_snipmate_compatibility = 1
-" Plugin key-mappings.
-imap <C-k>    <Plug>(neosnippet_expand_or_jump)
-smap <C-k>    <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>    <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
-autocmd InsertLeave * NeoSnippetClearMarkers
-snoremap <silent><ESC>  <ESC>:NeoSnippetClearMarkers<CR>
-
-let g:neosnippet#enable_completed_snippet = 1
-let g:neosnippet#enable_complete_done = 1
-
 autocmd FileType javascript let b:codefmt_formatter = 'clang-format'
 
 " gundo
@@ -566,6 +542,9 @@ augroup END
 
 "EasyGrep
 let g:EasyGrepFilesToExclude=".svn,.git,tags"
+
+"golang
+let g:go_fmt_command = "goimports"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC
@@ -816,3 +795,42 @@ fun! ToggleF1()
         let g:toggle_f1 = 1
     endif
 endfun
+
+command! Unit call s:GenerateUnitTestFile()
+
+function! s:GenerateUnitTestFile()
+    py3 << EOF
+file = vim.eval('expand("%:p")')
+project = vim.eval('projectroot#guess()')
+if file.startswith(project):
+    relative_path = file[len(project) + 1:]
+    parts = relative_path.split("/")
+    test_path_parts = []
+    for p in parts:
+        if p == "src":
+            p = "tests/unit"
+        test_path_parts.append(p)
+
+    last_idx = len(test_path_parts)-1
+    last = test_path_parts[last_idx]
+    file_parts = last.split(".")
+
+    file_name_parts = [
+        ".".join(file_parts[:-1]),
+        'Test',
+        '.',
+        file_parts[-1:].pop()
+    ]
+
+    test_path_parts[last_idx] = "".join(file_name_parts)
+    test_path = "/".join(test_path_parts)
+    full_test_path = project + "/" + test_path
+    vim.command('e ' + full_test_path + '"')
+EOF
+
+endfunction
+
+augroup Mkdir
+    autocmd!
+    autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
+augroup END
