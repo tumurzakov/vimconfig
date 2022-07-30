@@ -1,5 +1,6 @@
 {
   "diagnostic.checkCurrentLine": true,
+  "intelephense.environment.phpVersion": "8.1.0",
   "languageserver": {
     "go": {
       "command": "gopls",

@@ -49,6 +49,7 @@ Plugin 'git@github.com:sniphpets/sniphpets-common.git'
 Plugin 'git@github.com:sniphpets/sniphpets-symfony.git'
 Plugin 'git@github.com:sniphpets/sniphpets-doctrine.git'
 Plugin 'git@github.com:sniphpets/sniphpets-phpunit.git'
+Plugin 'git@github.com:AndrewRadev/tagalong.vim.git'
 
 
 call vundle#end()
@@ -834,3 +835,7 @@ augroup Mkdir
     autocmd!
     autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
 augroup END
+
+" XML Pretify
+com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+nnoremap = :FormatXML<Cr>
